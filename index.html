@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tamil News in English &mdash; Today</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@500;700&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#F3F1E7; --ink:#16263A; --accent:#D9891B; --card:#FFFDF8; --rule:#DAD5C4; --muted:#726E60; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:#1C1C1A; font-family: Arial, sans-serif; }
+  header { background:var(--ink); color:#F3F1E7; padding:22px 20px 18px; border-bottom:4px solid var(--accent); }
+  .wrap { max-width:860px; margin:0 auto; }
+  h1 { margin:0; font-size:26px; }
+  #status { margin:6px 0 0; font-size:13px; color:#C9CFD6; }
+  main { max-width:860px; margin:0 auto; padding:22px 20px 40px; }
+  .card { background:var(--card); border:1px solid var(--rule); border-radius:4px; padding:16px 20px; margin-bottom:12px; }
+  .tamil { font-family:'Noto Sans Tamil', sans-serif; font-weight:700; font-size:19px; color:var(--ink); line-height:1.5; }
+  .english { font-family:'Source Serif 4', Georgia, serif; font-weight:600; font-size:18px; line-height:1.45;
+             margin-top:10px; padding-top:10px; border-top:1px dashed var(--rule); }
+  .meta { display:flex; justify-content:space-between; gap:10px; margin-top:10px; font-size:12.5px; color:var(--muted); }
+  .meta a { color:#33455C; text-decoration:none; border-bottom:1px solid var(--accent); }
+  .empty { text-align:center; color:var(--muted); padding:50px 10px; }
+  footer { max-width:860px; margin:0 auto; padding:0 20px 30px; font-size:12px; color:var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Tamil News in English</h1>
+    <p id="status">Loading&hellip;</p>
+  </div>
+</header>
+<main><div id="list"></div></main>
+<footer>
+  Headlines from Tamil OneIndia, machine-translated by the NLLB-200 Transformer model.
+  Shows today's news only (Indian time); yesterday's news is removed automatically.
+</footer>
+
+<script>
+const REFRESH_MS = 5 * 60 * 1000;
+
+function todayIST() {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(new Date());
+}
+function fmtTime(iso) {
+  return new Date(iso).toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "numeric", minute: "2-digit" });
+}
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
+
+function render(items) {
+  const list = document.getElementById("list");
+  list.textContent = "";
+  if (items.length === 0) {
+    list.appendChild(el("div", "empty", "No news published yet today. Please check back soon."));
+    return;
+  }
+  items.forEach(i => {
+    const card = el("div", "card");
+    card.appendChild(el("div", "tamil", i.tamil));
+    card.appendChild(el("div", "english", i.english));
+    const meta = el("div", "meta");
+    meta.appendChild(el("span", "", fmtTime(i.time)));
+    if (/^https?:\/\//.test(i.link)) {
+      const a = el("a", "", "Read original \u2192");
+      a.href = i.link; a.target = "_blank"; a.rel = "noopener";
+      meta.appendChild(a);
+    }
+    card.appendChild(meta);
+    list.appendChild(card);
+  });
+}
+
+async function load() {
+  const status = document.getElementById("status");
+  try {
+    const res = await fetch("news.json?t=" + Date.now(), { cache: "no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    const today = todayIST();
+    const items = (data.items || [])
+      .filter(i => i.date === today)
+      .sort((a, b) => b.time.localeCompare(a.time));
+    render(items);
+    const checked = data.checked_at ? " \u00b7 last checked " + fmtTime(data.checked_at) : "";
+    status.textContent = "Today \u00b7 " + items.length + " headlines" + checked;
+  } catch (err) {
+    status.textContent = "Could not load the news. Will retry shortly.";
+  }
+}
+
+load();
+setInterval(load, REFRESH_MS);
+</script>
+</body>
+</html>
