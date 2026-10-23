@@ -1,6 +1,28 @@
 {
  "date": "2026-10-23",
- "checked_at": "2026-10-23T07:16:45+05:30",
+ "checked_at": "2026-10-23T12:38:36+05:30",
  "source": "Tamil OneIndia",
- "items": []
+ "items": [
+  {
+   "tamil": "தங்கம் விலை ஒரு லட்சத்திற்கு கீழ் வரலாம்? வரலாற்றில் இல்லாத மாற்றம் வரப்போகிறது",
+   "english": "Could the price of gold fall below one lakh? The unprecedented change in history is coming.",
+   "link": "https://tamil.oneindia.com/news/business/gold-price-can-come-below-one-lakh-a-change-unprecedented-in-history-is-coming-840123.html",
+   "time": "2026-10-23T12:06:19+05:30",
+   "date": "2026-10-23"
+  },
+  {
+   "tamil": "சர்வ நாசம் ஏற்பட போகுது? முதல்முறையாக மனிதர்களை தாக்கிய ஷமோண்டா வைரஸ்.. கொரோனாவை விட கொடியது?",
+   "english": "Will there ever be an end to the Shomonda virus, which struck humans for the first time, more deadly than the coronavirus?",
+   "link": "https://tamil.oneindia.com/news/international/shamonda-virus-first-human-death-reported-in-france-how-dangerous-is-it-should-we-need-to-worry-840117.html",
+   "time": "2026-10-23T11:43:45+05:30",
+   "date": "2026-10-23"
+  },
+  {
+   "tamil": "சிங்கப்பெண் படை எங்கே? சாத்தான்குளத்தில் தாய் வெட்டிக் கொலை, 2 சிறுமிகள் மீட்பு.. விஜய் மௌனம்",
+   "english": "Where's the lioness' army? Mother murdered in Satan Lake, two girls rescued.",
+   "link": "https://tamil.oneindia.com/news/tamilnadu/sathankulam-shocking-crime-woman-murdered-2-daughters-rescued-public-outcry-over-law-and-order-840113.html",
+   "time": "2026-10-23T11:13:38+05:30",
+   "date": "2026-10-23"
+  }
+ ]
 }
