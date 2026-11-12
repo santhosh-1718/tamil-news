@@ -1,6 +1,21 @@
 {
  "date": "2026-11-12",
- "checked_at": "2026-11-12T04:02:35+05:30",
+ "checked_at": "2026-11-12T09:10:56+05:30",
  "source": "Tamil OneIndia",
- "items": []
+ "items": [
+  {
+   "tamil": "ஆந்திராவுக்கு போவதாக கூறப்பட்ட கொரிய நிறுவனங்கள்.. தமிழகத்தில் 1,370 கோடி முதலீடு செய்ய உறுதி!",
+   "english": "The Korean companies said to be going to Andhra Pradesh have pledged to invest Rs 1,370 crore in Tamil Nadu.",
+   "link": "https://tamil.oneindia.com/news/business/amid-ap-shift-buzz-two-korean-firms-commit-1-370-crore-to-tamil-nadu-844705.html",
+   "time": "2026-11-12T08:48:25+05:30",
+   "date": "2026-11-12"
+  },
+  {
+   "tamil": "நாடு திரும்பும் இலங்கைத் தமிழர் சிவராசா.. அனைத்து வழக்குகளை மொத்தமாக கைவிட்டது சவூதி அரேபியா",
+   "english": "Sri Lankan Tamil Shivarasa returning to the country, Saudi Arabia has dropped all cases altogether",
+   "link": "https://tamil.oneindia.com/news/international/sivarasa-a-sri-lankan-tamil-to-return-home-saudi-arabia-drops-all-cases-against-him-844703.html",
+   "time": "2026-11-12T08:41:03+05:30",
+   "date": "2026-11-12"
+  }
+ ]
 }
